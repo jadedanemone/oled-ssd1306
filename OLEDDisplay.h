@@ -155,10 +155,10 @@ class OLEDDisplay : public Print {
     void drawProgressBar(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint8_t progress);
 
     // Draw a bitmap in the internal image format
-    void drawFastImage(int16_t x, int16_t y, int16_t width, int16_t height, const char *image);
+    void drawFastImage(int16_t x, int16_t y, int16_t width, int16_t height, const uint8_t *image);
 
     // Draw a XBM
-    void drawXbm(int16_t x, int16_t y, int16_t width, int16_t height, const char *xbm);
+    void drawXbm(int16_t x, int16_t y, int16_t width, int16_t height, const uint8_t *xbm);
 
     /* Text functions */
 
@@ -184,7 +184,7 @@ class OLEDDisplay : public Print {
 
     // Sets the current font. Available default fonts
     // ArialMT_Plain_10, ArialMT_Plain_16, ArialMT_Plain_24
-    void setFont(const char *fontData);
+    void setFont(const uint8_t *fontData);
 
     /* Display functions */
 
@@ -237,7 +237,7 @@ class OLEDDisplay : public Print {
     OLEDDISPLAY_TEXT_ALIGNMENT   textAlignment = TEXT_ALIGN_LEFT;
     OLEDDISPLAY_COLOR            color         = WHITE;
 
-    const char          *fontData              = ArialMT_Plain_10;
+    const uint8_t          *fontData              = ArialMT_Plain_10;
 
     // State values for logBuffer
     uint16_t   logBufferSize                   = 0;

@@ -34,18 +34,14 @@
 class SSD1306Wire : public OLEDDisplay {
   private:
       uint8_t             _address;
-      uint8_t             _sda;
-      uint8_t             _scl;
 
   public:
-    SSD1306Wire(uint8_t _address, uint8_t _sda, uint8_t _scl) {
+    SSD1306Wire(uint8_t _address) {
       this->_address = _address;
-      this->_sda = _sda;
-      this->_scl = _scl;
     }
 
     bool connect() {
-      Wire.begin(this->_sda, this->_scl);
+      Wire.begin();
       // Let's use ~700khz if ESP8266 is in 160Mhz mode
       // this will be limited to ~400khz if the ESP8266 in 80Mhz mode.
       Wire.setClock(700000);
