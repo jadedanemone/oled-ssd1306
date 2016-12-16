@@ -31,6 +31,9 @@
 #include "OLEDDisplay.h"
 #include <Wire.h>
 
+#define max(a,b) ((a)>(b)?(a):(b))
+#define min(a,b) ((a)<(b)?(a):(b))
+
 #define SH1106_SET_PUMP_VOLTAGE 0X30
 #define SH1106_SET_PUMP_MODE 0XAD
 #define SH1106_PUMP_ON 0X8B
@@ -70,10 +73,10 @@ class SH1106Wire : public OLEDDisplay {
           for (x = 0; x < DISPLAY_WIDTH; x++) {
            uint16_t pos = x + y * DISPLAY_WIDTH;
            if (buffer[pos] != buffer_back[pos]) {
-             minBoundY = _min(minBoundY, y);
-             maxBoundY = _max(maxBoundY, y);
-             minBoundX = _min(minBoundX, x);
-             maxBoundX = _max(maxBoundX, x);
+             minBoundY = min(minBoundY, y);
+             maxBoundY = max(maxBoundY, y);
+             minBoundX = min(minBoundX, x);
+             maxBoundX = max(maxBoundX, x);
            }
            buffer_back[pos] = buffer[pos];
          }
